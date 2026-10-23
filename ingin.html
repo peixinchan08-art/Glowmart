@@ -1,0 +1,22 @@
+<!doctype html>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bunny Garden</title>
+<body style="text-align:center;font-family:sans-serif;background:#b8e6a1">
+<h1>🐰 Bunny Garden</h1>
+<p>🥕 Carrots: <b id="n">0</b></p>
+<div id="g" style="display:grid;grid-template-columns:repeat(4,70px);gap:6px;justify-content:center"></div>
+<p>Tap a plot: plant, wait, then harvest!</p>
+<script>
+let n=0,p=Array(12).fill(0);
+const g=document.getElementById("g");
+p.forEach((_,i)=>{
+ const b=document.createElement("button");
+ b.style.cssText="height:70px;font-size:30px;background:#8b5e3c;border:0;border-radius:10px";
+ b.onclick=()=>{
+  if(p[i]==0){p[i]=1;b.textContent="🌱";setTimeout(()=>{p[i]=2;b.textContent="🥕"},4000)}
+  else if(p[i]==2){p[i]=0;b.textContent="";n++;document.getElementById("n").textContent=n}
+ };
+ g.appendChild(b);
+});
+</script>
+</body>
